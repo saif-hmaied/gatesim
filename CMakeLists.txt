@@ -5,8 +5,19 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+set(GATESIM_WARNINGS -Wall -Wextra -Wpedantic -Werror)
+
+# ---------- Library ----------
+add_library(gatesim_core
+    src/lexer.cpp
+)
+target_include_directories(gatesim_core PUBLIC include)
+target_compile_options(gatesim_core PRIVATE ${GATESIM_WARNINGS})
+
+# ---------- Command-line tool ----------
 add_executable(gatesim apps/main.cpp)
-target_compile_options(gatesim PRIVATE -Wall -Wextra -Wpedantic -Werror)
+target_compile_options(gatesim PRIVATE ${GATESIM_WARNINGS})
+target_link_libraries(gatesim PRIVATE gatesim_core)
 
 # ---------- Tests ----------
 enable_testing()
@@ -21,8 +32,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 add_executable(gatesim_tests tests/test_sanity.cpp)
-target_compile_options(gatesim_tests PRIVATE -Wall -Wextra -Wpedantic -Werror)
-target_link_libraries(gatesim_tests PRIVATE GTest::gtest_main)
+target_compile_options(gatesim_tests PRIVATE ${GATESIM_WARNINGS})
+target_link_libraries(gatesim_tests PRIVATE gatesim_core GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(gatesim_tests)
