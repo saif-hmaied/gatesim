@@ -1,4 +1,4 @@
-module full_adder(a,b,cin,cout,sum)
+module full_adder(a,b,cin,cout,sum);
     input cin,a,b;
     output cout,sum;
     wire w1,w2,w3;
