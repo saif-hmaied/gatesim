@@ -1,10 +1,10 @@
 #include "gatesim/lexer.hpp"
 #include <string_view>
 #include <string>
-#include <vector>
-#include <algorithm>
+#include <cctype>
 using namespace std;
 namespace gatesim{
+    namespace {
     struct Keyword {
         std::string_view text;
         TokenKind kind;
@@ -36,20 +36,26 @@ namespace gatesim{
         }
         return TokenKind::Identifier;
     }
+    bool is_space(char c){
+        return c==' '||c=='\r'||c=='\t';
+    }
+    bool is_punctuation(char c){
+        return c=='('||c==')'||c==','||c==';';
+    }
+    }  // namespace
     LexResult lex(std::string_view text){
         int n=text.size();
         int cur_line=1,cur_column=1;
         LexResult result;
         int i=0;
-        vector<char>punctuation={',','(',')',';'};
         while(i<n){
             int j=i;
-            if(find(punctuation.begin(),punctuation.end(),text[j])!=punctuation.end()){
+            if(is_punctuation(text[j])){
                 result.tokens.push_back({look_up_keyword(text.substr(i,j-i+1)),text.substr(i,j-i+1),cur_line,cur_column});
                 cur_column++;
                 i=j+1;
                 continue;
-            }else if(text[j]==' '||text[j]=='\r'||text[j]=='\t'){
+            }else if(is_space(text[j])){
                 i=j+1;
                 cur_column++;
                 continue;
@@ -73,12 +79,12 @@ namespace gatesim{
                 continue;
             }else{
                 while(j<n){
-                    if(text[j]==' '||text[j]=='\r'||text[j]=='\t'||text[j]=='\n'||find(punctuation.begin(),punctuation.end(),text[j])!=punctuation.end()){
+                    if(is_space(text[j])||text[j]=='\n'||is_punctuation(text[j])){
                         result.tokens.push_back({look_up_keyword(text.substr(i,j-i)),text.substr(i,j-i),cur_line,cur_column-(j-i)});
                         i=j;
                         break;
                     }
-                    if(!isalnum(text[j])&&text[j]!='_'){
+                    if((!isalnum((unsigned char)text[j])&&text[j]!='_')||(j==i&&isdigit((unsigned char)text[j]))){
                         result.error={string("unexpected character : "+string(1,text[j])),cur_column,cur_line};
                         return result;
                     }
@@ -96,4 +102,4 @@ namespace gatesim{
         result.tokens.push_back({TokenKind::EndOfFile,"",cur_line,cur_column});
         return result;
     }
-}
+}  

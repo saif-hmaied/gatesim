@@ -221,6 +221,14 @@ TEST(LexerTest, ErrorMessageNamesTheCharacter) {
     EXPECT_NE(result.error->error_message.find('@'), std::string::npos);
 }
 
+TEST(LexerTest, NameStartingWithDigitIsError) {
+    // "w1" is a name, but "1w" is not: names cannot start with a digit.
+    auto result = lex("wire 1w;");
+    ASSERT_TRUE(result.error);
+    EXPECT_EQ(result.error->line, 1);
+    EXPECT_EQ(result.error->column, 6);
+}
+
 TEST(LexerTest, SingleSlashIsError) {
     // Only "//" starts a comment; one "/" alone is not allowed.
     auto result = lex("a / b");
