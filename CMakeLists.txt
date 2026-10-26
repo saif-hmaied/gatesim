@@ -31,7 +31,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable(gatesim_tests tests/test_sanity.cpp)
+add_executable(gatesim_tests
+    tests/test_sanity.cpp
+    tests/test_lexer.cpp
+)
 target_compile_options(gatesim_tests PRIVATE ${GATESIM_WARNINGS})
 target_link_libraries(gatesim_tests PRIVATE gatesim_core GTest::gtest_main)
 
