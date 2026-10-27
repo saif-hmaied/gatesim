@@ -11,6 +11,7 @@ set(GATESIM_WARNINGS -Wall -Wextra -Wpedantic -Werror)
 add_library(gatesim_core
     src/lexer.cpp
     src/parser.cpp
+    src/check.cpp
 )
 target_include_directories(gatesim_core PUBLIC include)
 target_compile_options(gatesim_core PRIVATE ${GATESIM_WARNINGS})
@@ -36,6 +37,7 @@ add_executable(gatesim_tests
     tests/test_sanity.cpp
     tests/test_lexer.cpp
     tests/test_parser.cpp
+    tests/test_check.cpp
 )
 target_compile_options(gatesim_tests PRIVATE ${GATESIM_WARNINGS})
 target_link_libraries(gatesim_tests PRIVATE gatesim_core GTest::gtest_main)
