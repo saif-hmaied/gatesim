@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <charconv>
+#include <cmath>
 #include <cstddef>
 #include <fstream>
 #include <iostream>
@@ -5,12 +8,14 @@
 #include <sstream>
 #include <string>
 #include <string_view>
+#include <system_error>
 #include <vector>
 
 #include "gatesim/check.hpp"
 #include "gatesim/lexer.hpp"
 #include "gatesim/parser.hpp"
 #include "gatesim/simulator.hpp"
+#include "gatesim/timing.hpp"
 using namespace std;
 using namespace gatesim;
 
@@ -19,7 +24,8 @@ namespace{
         cerr<<"usage:\n"
             <<"  gatesim check <file.v>\n"
             <<"  gatesim sim <file.v> --input name=0|1 ...\n"
-            <<"  gatesim sim <file.v> --all"<<endl;
+            <<"  gatesim sim <file.v> --all\n"
+            <<"  gatesim timing <file.v> [--clock <ns>]"<<endl;
     }
 
     optional<Netlist> load(const string &path){
@@ -64,7 +70,7 @@ namespace{
         return errors>0?1:0;
     }
 
-    optional<vector<GateId>> order_for_simulation(const string &path,const Netlist &netlist){
+    optional<vector<GateId>> valid_order(const string &path,const Netlist &netlist,string_view action){
         CheckResult result=check(netlist);
         int errors=0;
         for(const Diagnostic &d:result.diagnostics){
@@ -74,7 +80,7 @@ namespace{
             }
         }
         if(errors>0){
-            cerr<<"gatesim: cannot simulate a circuit with errors"<<endl;
+            cerr<<"gatesim: cannot "<<action<<" a circuit with errors"<<endl;
             return nullopt;
         }
         return result.topsort;
@@ -159,10 +165,58 @@ namespace{
     int run_sim(const string &path,string_view mode,const vector<string_view> &args){
         optional<Netlist> netlist=load(path);
         if(!netlist)return 1;
-        optional<vector<GateId>> order=order_for_simulation(path,*netlist);
+        optional<vector<GateId>> order=valid_order(path,*netlist,"simulate");
         if(!order)return 1;
         if(mode=="--all")return run_sim_all(*netlist,*order);
         return run_sim_input(*netlist,*order,args);
+    }
+
+    optional<double> parse_clock(string_view text){
+        double value=0;
+        const char *first=text.data();
+        const char *last=text.data()+text.size();
+        auto [end,error]=from_chars(first,last,value);
+        if(error!=errc()||end!=last||!isfinite(value)||value<=0){
+            cerr<<"gatesim: --clock must be a positive number of ns, got '"<<text<<"'"<<endl;
+            return nullopt;
+        }
+        return value;
+    }
+
+    int run_timing(const string &path,optional<double> clock){
+        optional<Netlist> netlist=load(path);
+        if(!netlist)return 1;
+        optional<vector<GateId>> order=valid_order(path,*netlist,"analyze the timing of");
+        if(!order)return 1;
+        if(netlist->output.empty()){
+            cout<<"module "<<netlist->name<<" has no outputs, nothing to analyze"<<endl;
+            return 0;
+        }
+        TimingResult result=analyze_timing(*netlist,*order);
+
+        size_t width=0;
+        for(NetId net:netlist->output)width=max(width,netlist->wires[net].name.size());
+        cout<<"output arrival times:"<<endl;
+        for(NetId net:netlist->output){
+            const string &name=netlist->wires[net].name;
+            cout<<"  "<<name<<string(width-name.size(),' ')<<"  "<<result.arrival[net]<<" ns"<<endl;
+        }
+
+        cout<<"critical path ("<<result.worst_arrival<<" ns):"<<endl<<"  ";
+        for(size_t i=0;i<result.critical_path.size();i++){
+            NetId net=result.critical_path[i];
+            if(i>0){
+                GateId driver=netlist->wires[net].in[0];
+                cout<<" -> "<<netlist->Gates[driver].name<<" -> ";
+            }
+            cout<<netlist->wires[net].name;
+        }
+        cout<<endl;
+
+        if(!clock)return 0;
+        double slack=*clock-result.worst_arrival;
+        cout<<"clock "<<*clock<<" ns, slack "<<slack<<" ns: "<<(slack<0?"FAILS":"OK")<<endl;
+        return slack<0?1:0;
     }
 }
 
@@ -182,6 +236,14 @@ int main(int argc,char* argv[]){
         vector<string_view> args(argv+4,argv+argc);
         if(mode=="--all"&&args.empty())return run_sim(path,mode,args);
         if(mode=="--input")return run_sim(path,mode,args);
+    }
+    if(command=="timing"){
+        if(argc==3)return run_timing(path,nullopt);
+        if(argc==5&&string_view(argv[3])=="--clock"){
+            optional<double> clock=parse_clock(argv[4]);
+            if(!clock)return 1;
+            return run_timing(path,clock);
+        }
     }
     print_usage();
     return 1;
