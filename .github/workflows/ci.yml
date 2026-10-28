@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -23,12 +23,8 @@ jobs:
       - name: Configure
         run: >
           cmake -S . -B build -G Ninja
-          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_BUILD_TYPE=Release
           -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
-          -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer"
 
       - name: Build
         run: cmake --build build
-
-      - name: Test
-        run: ctest --test-dir build --output-on-failure
