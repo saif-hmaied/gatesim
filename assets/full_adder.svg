@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" width="840" height="430" role="img" aria-label="Full adder circuit with its critical path a, g1, g4, g5, cout highlighted (7 ns)">
+<style>
+text{font-family:ui-sans-serif,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#e6edf3}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.w{stroke:#8b949e;stroke-width:2;fill:none}
+.cp{stroke:#f85149;stroke-width:3;fill:none}
+.gate{fill:#161b22;stroke:#30363d;stroke-width:1.5}
+.gate.hot{stroke:#f85149;stroke-width:2.5}
+.name{font-size:15px;font-weight:600;text-anchor:middle}
+.type{font-size:12px;fill:#8b949e;text-anchor:middle}
+.io{font-size:15px;font-weight:600}
+.t{font-size:12px;fill:#8b949e}
+.t.hot{fill:#f85149;font-weight:600}
+</style>
+
+<rect x="0.5" y="0.5" width="839" height="429" rx="12" fill="#0d1117" stroke="#30363d"/>
+
+<!-- input a: to g1 (critical) and to g3 -->
+<path class="w" d="M110 64 V264 H190"/>
+<path class="cp" d="M60 64 H190"/>
+<circle cx="110" cy="64" r="4" fill="#f85149"/>
+
+<!-- input b: to g1 and g3 -->
+<path class="w" d="M60 96 H190 M135 96 V296 H190"/>
+<circle cx="135" cy="96" r="4" fill="#8b949e"/>
+
+<!-- input cin: to g2 and g4 -->
+<path class="w" d="M60 360 H350 V48 H410 M350 188 H410"/>
+<circle cx="350" cy="188" r="4" fill="#8b949e"/>
+
+<!-- w1: g1 to g2, and g1 to g4 (critical) -->
+<path class="w" d="M310 80 H410"/>
+<path class="cp" d="M280 80 H310 V156 H410"/>
+<circle cx="310" cy="80" r="4" fill="#f85149"/>
+
+<!-- w2: g3 to g5 -->
+<path class="w" d="M280 280 H580 V248 H610"/>
+
+<!-- w3: g4 to g5 (critical) -->
+<path class="cp" d="M500 172 H560 V216 H610"/>
+
+<!-- outputs -->
+<path class="w" d="M500 64 H750"/>
+<path class="cp" d="M700 232 H750"/>
+
+<!-- gates -->
+<rect class="gate hot" x="190" y="48" width="90" height="64" rx="8"/>
+<text class="name" x="235" y="76">g1</text><text class="type" x="235" y="95">XOR · 3 ns</text>
+
+<rect class="gate" x="190" y="248" width="90" height="64" rx="8"/>
+<text class="name" x="235" y="276">g3</text><text class="type" x="235" y="295">AND · 2 ns</text>
+
+<rect class="gate" x="410" y="32" width="90" height="64" rx="8"/>
+<text class="name" x="455" y="60">g2</text><text class="type" x="455" y="79">XOR · 3 ns</text>
+
+<rect class="gate hot" x="410" y="140" width="90" height="64" rx="8"/>
+<text class="name" x="455" y="168">g4</text><text class="type" x="455" y="187">AND · 2 ns</text>
+
+<rect class="gate hot" x="610" y="200" width="90" height="64" rx="8"/>
+<text class="name" x="655" y="228">g5</text><text class="type" x="655" y="247">OR · 2 ns</text>
+
+<!-- input labels -->
+<text class="io mono" x="28" y="69">a</text>
+<text class="io mono" x="28" y="101">b</text>
+<text class="io mono" x="24" y="365">cin</text>
+
+<!-- arrival times on nets -->
+<text class="t mono" x="358" y="71">w1 3ns</text>
+<text class="t mono" x="420" y="272">w2 2ns</text>
+<text class="t hot mono" x="506" y="165">w3 5ns</text>
+
+<!-- output labels -->
+<text class="io mono" x="758" y="69">sum</text>
+<text class="t mono" x="758" y="86">6 ns</text>
+<text class="io mono" x="758" y="237" style="fill:#f85149">cout</text>
+<text class="t hot mono" x="758" y="254">7 ns</text>
+
+<!-- legend -->
+<line x1="28" y1="404" x2="58" y2="404" stroke="#f85149" stroke-width="3"/>
+<text x="68" y="408" style="font-size:13px">critical path: a → g1 → g4 → g5 → cout = 7 ns</text>
+<text x="812" y="408" text-anchor="end" style="font-size:13px;fill:#8b949e">inputs arrive at 0 ns · each net shows its arrival time</text>
+</svg>

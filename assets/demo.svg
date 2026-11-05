@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 281" width="780" height="281" role="img" aria-label="gatesim demo: check, sim and timing on a full adder">
+<style>
+text{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;font-size:14px;white-space:pre}
+.o{fill:#c9d1d9}.ok{fill:#3fb950}.err{fill:#f85149;font-weight:bold}.hl{fill:#e3b341}.dim{fill:#6e7681}.hd{fill:#e6edf3;font-weight:bold}.p{fill:#3fb950;font-weight:bold}.c{fill:#e6edf3}
+.a{animation-duration:25.25s;animation-iteration-count:infinite;animation-timing-function:linear;opacity:0}
+.cur{animation:blink 1s steps(1,end) infinite}
+@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+@keyframes k0{0%{opacity:0}1.569%{opacity:0}1.584%{opacity:1}35.783%{opacity:1}37.169%{opacity:0}100%{opacity:0}}
+.e0{animation-name:k0}
+@keyframes c0{0%{opacity:0;transform:translateX(0)}1.569%{opacity:0;transform:translateX(0)}1.584%{opacity:1;transform:translateX(0)}3.961%{opacity:1;transform:translateX(0);animation-timing-function:steps(35,end)}9.738%{opacity:1;transform:translateX(294.0px)}11.108%{opacity:1;transform:translateX(294.0px)}11.124%{opacity:0;transform:translateX(294.0px)}100%{opacity:0;transform:translateX(294.0px)}}
+.v0{animation-name:c0}
+@keyframes k1{0%{opacity:0}11.108%{opacity:0}11.124%{opacity:1}35.783%{opacity:1}37.169%{opacity:0}100%{opacity:0}}
+.e1{animation-name:k1}
+@keyframes k2{0%{opacity:0}12.297%{opacity:0}12.313%{opacity:1}35.783%{opacity:1}37.169%{opacity:0}100%{opacity:0}}
+.e2{animation-name:k2}
+@keyframes c2{0%{opacity:0;transform:translateX(0)}12.297%{opacity:0;transform:translateX(0)}12.313%{opacity:1;transform:translateX(0)}14.689%{opacity:1;transform:translateX(0);animation-timing-function:steps(33,end)}20.136%{opacity:1;transform:translateX(277.2px)}21.507%{opacity:1;transform:translateX(277.2px)}21.522%{opacity:0;transform:translateX(277.2px)}100%{opacity:0;transform:translateX(277.2px)}}
+.v2{animation-name:c2}
+@keyframes k3{0%{opacity:0}21.507%{opacity:0}21.522%{opacity:1}35.783%{opacity:1}37.169%{opacity:0}100%{opacity:0}}
+.e3{animation-name:k3}
+@keyframes k4{0%{opacity:0}22.695%{opacity:0}22.711%{opacity:1}35.783%{opacity:1}37.169%{opacity:0}100%{opacity:0}}
+.e4{animation-name:k4}
+@keyframes k5{0%{opacity:0}38.540%{opacity:0}38.555%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e5{animation-name:k5}
+@keyframes c5{0%{opacity:0;transform:translateX(0)}38.540%{opacity:0;transform:translateX(0)}38.555%{opacity:1;transform:translateX(0)}40.932%{opacity:1;transform:translateX(0);animation-timing-function:steps(39,end)}47.369%{opacity:1;transform:translateX(327.6px)}48.740%{opacity:1;transform:translateX(327.6px)}48.756%{opacity:0;transform:translateX(327.6px)}100%{opacity:0;transform:translateX(327.6px)}}
+.v5{animation-name:c5}
+@keyframes k6{0%{opacity:0}48.740%{opacity:0}48.756%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e6{animation-name:k6}
+@keyframes k7{0%{opacity:0}49.175%{opacity:0}49.191%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e7{animation-name:k7}
+@keyframes k8{0%{opacity:0}49.611%{opacity:0}49.627%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e8{animation-name:k8}
+@keyframes k9{0%{opacity:0}50.047%{opacity:0}50.063%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e9{animation-name:k9}
+@keyframes k10{0%{opacity:0}50.483%{opacity:0}50.498%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e10{animation-name:k10}
+@keyframes k11{0%{opacity:0}50.918%{opacity:0}50.934%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e11{animation-name:k11}
+@keyframes k12{0%{opacity:0}51.354%{opacity:0}51.370%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e12{animation-name:k12}
+@keyframes k13{0%{opacity:0}51.790%{opacity:0}51.806%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e13{animation-name:k13}
+@keyframes k14{0%{opacity:0}52.226%{opacity:0}52.241%{opacity:1}64.561%{opacity:1}65.947%{opacity:0}100%{opacity:0}}
+.e14{animation-name:k14}
+@keyframes k15{0%{opacity:0}67.318%{opacity:0}67.333%{opacity:1}97.227%{opacity:1}98.614%{opacity:0}100%{opacity:0}}
+.e15{animation-name:k15}
+@keyframes c15{0%{opacity:0;transform:translateX(0)}67.318%{opacity:0;transform:translateX(0)}67.333%{opacity:1;transform:translateX(0)}69.710%{opacity:1;transform:translateX(0);animation-timing-function:steps(46,end)}77.302%{opacity:1;transform:translateX(386.4px)}78.673%{opacity:1;transform:translateX(386.4px)}78.689%{opacity:0;transform:translateX(386.4px)}100%{opacity:0;transform:translateX(386.4px)}}
+.v15{animation-name:c15}
+@keyframes k16{0%{opacity:0}78.673%{opacity:0}78.689%{opacity:1}97.227%{opacity:1}98.614%{opacity:0}100%{opacity:0}}
+.e16{animation-name:k16}
+@keyframes k17{0%{opacity:0}79.782%{opacity:0}79.798%{opacity:1}97.227%{opacity:1}98.614%{opacity:0}100%{opacity:0}}
+.e17{animation-name:k17}
+@keyframes k18{0%{opacity:0}80.891%{opacity:0}80.907%{opacity:1}97.227%{opacity:1}98.614%{opacity:0}100%{opacity:0}}
+.e18{animation-name:k18}
+@keyframes k19{0%{opacity:0}82.000%{opacity:0}82.016%{opacity:1}97.227%{opacity:1}98.614%{opacity:0}100%{opacity:0}}
+.e19{animation-name:k19}
+@keyframes k20{0%{opacity:0}83.110%{opacity:0}83.125%{opacity:1}97.227%{opacity:1}98.614%{opacity:0}100%{opacity:0}}
+.e20{animation-name:k20}
+@keyframes k21{0%{opacity:0}84.219%{opacity:0}84.235%{opacity:1}97.227%{opacity:1}98.614%{opacity:0}100%{opacity:0}}
+.e21{animation-name:k21}
+</style>
+<rect x="0.5" y="0.5" width="779" height="280" rx="10" fill="#0d1117"/>
+<path d="M0.5 36 V10.5 a10 10 0 0 1 10 -10 H769.5 a10 10 0 0 1 10 10 V36 Z" fill="#161b22"/>
+<circle cx="20" cy="18" r="6" fill="#ff5f57"/><circle cx="40" cy="18" r="6" fill="#febc2e"/><circle cx="60" cy="18" r="6" fill="#28c840"/>
+<text x="390.0" y="23" text-anchor="middle" style="fill:#8b949e;font-size:13px">~/gatesim</text>
+<g class="a e0"><text class="" x="22" y="66" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="p">$</tspan></text><text class="" x="38.8" y="66" textLength="294.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="c">gatesim check examples/full_adder.v</tspan></text></g>
+<g class="a v0"><rect x="38.8" y="51" width="308.0" height="21" fill="#0d1117"/><rect class="cur" x="39.8" y="53" width="8" height="16" fill="#c9d1d9"/></g>
+<text class="a e1" x="22" y="87" textLength="470.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">module full_adder: 5 gates, 8 nets, </tspan><tspan class="ok">0 errors</tspan><tspan class="o">, 0 warnings</tspan></text>
+<g class="a e2"><text class="" x="22" y="129" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="p">$</tspan></text><text class="" x="38.8" y="129" textLength="277.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="c">gatesim check examples/bad_loop.v</tspan></text></g>
+<g class="a v2"><rect x="38.8" y="114" width="291.2" height="21" fill="#0d1117"/><rect class="cur" x="39.8" y="116" width="8" height="16" fill="#c9d1d9"/></g>
+<text class="a e3" x="22" y="150" textLength="621.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">examples/bad_loop.v: </tspan><tspan class="err">error:</tspan><tspan class="o"> combinational loop: g1 -&gt; w1 -&gt; g2 -&gt; w2 -&gt; g1</tspan></text>
+<text class="a e4" x="22" y="171" textLength="453.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">module bad_loop: 3 gates, 4 nets, </tspan><tspan class="err">1 errors</tspan><tspan class="o">, 0 warnings</tspan></text>
+<g class="a e5"><text class="" x="22" y="66" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="p">$</tspan></text><text class="" x="38.8" y="66" textLength="327.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="c">gatesim sim examples/full_adder.v --all</tspan></text></g>
+<g class="a v5"><rect x="38.8" y="51" width="341.6" height="21" fill="#0d1117"/><rect class="cur" x="39.8" y="53" width="8" height="16" fill="#c9d1d9"/></g>
+<text class="a e6" x="22" y="87" textLength="151.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="hd">a b cin </tspan><tspan class="dim">| </tspan><tspan class="hd">cout sum</tspan></text>
+<text class="a e7" x="22" y="108" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">0 0 0   </tspan><tspan class="dim">| </tspan><tspan class="ok">0    0</tspan></text>
+<text class="a e8" x="22" y="129" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">0 0 1   </tspan><tspan class="dim">| </tspan><tspan class="ok">0    1</tspan></text>
+<text class="a e9" x="22" y="150" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">0 1 0   </tspan><tspan class="dim">| </tspan><tspan class="ok">0    1</tspan></text>
+<text class="a e10" x="22" y="171" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">0 1 1   </tspan><tspan class="dim">| </tspan><tspan class="ok">1    0</tspan></text>
+<text class="a e11" x="22" y="192" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">1 0 0   </tspan><tspan class="dim">| </tspan><tspan class="ok">0    1</tspan></text>
+<text class="a e12" x="22" y="213" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">1 0 1   </tspan><tspan class="dim">| </tspan><tspan class="ok">1    0</tspan></text>
+<text class="a e13" x="22" y="234" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">1 1 0   </tspan><tspan class="dim">| </tspan><tspan class="ok">1    0</tspan></text>
+<text class="a e14" x="22" y="255" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">1 1 1   </tspan><tspan class="dim">| </tspan><tspan class="ok">1    1</tspan></text>
+<g class="a e15"><text class="" x="22" y="66" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="p">$</tspan></text><text class="" x="38.8" y="66" textLength="386.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="c">gatesim timing examples/full_adder.v --clock 5</tspan></text></g>
+<g class="a v15"><rect x="38.8" y="51" width="400.4" height="21" fill="#0d1117"/><rect class="cur" x="39.8" y="53" width="8" height="16" fill="#c9d1d9"/></g>
+<text class="a e16" x="22" y="87" textLength="176.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">output arrival times:</tspan></text>
+<text class="a e17" x="22" y="108" textLength="100.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">  cout  7 ns</tspan></text>
+<text class="a e18" x="22" y="129" textLength="100.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">  sum   6 ns</tspan></text>
+<text class="a e19" x="22" y="150" textLength="176.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">critical path (7 ns):</tspan></text>
+<text class="a e20" x="22" y="171" textLength="344.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="hl">  a -&gt; g1 -&gt; w1 -&gt; g4 -&gt; w3 -&gt; g5 -&gt; cout</tspan></text>
+<text class="a e21" x="22" y="192" textLength="252.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve"><tspan class="o">clock 5 ns, slack -2 ns: </tspan><tspan class="err">FAILS</tspan></text>
+<rect x="0.5" y="0.5" width="779" height="280" rx="10" fill="none" stroke="#30363d"/>
+</svg>
